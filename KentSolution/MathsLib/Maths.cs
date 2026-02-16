@@ -1,5 +1,6 @@
 ﻿namespace MathsLib
 {
+    //[Serializable]
     public class Maths
     {
         public int Add(int a, int b)
