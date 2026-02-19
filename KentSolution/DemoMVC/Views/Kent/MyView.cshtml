@@ -1,4 +1,5 @@
 ﻿@model DemoMVC.Models.Emp
+
 <html>
     <head>
         <title>Demo</title>
@@ -6,8 +7,19 @@
     <body>
         <h1>Welcome to MVC</h1>
 
-        <h1>@Model.No</h1>
+     @*    <h1>@Model.No</h1>
         <h1>@Model.Name</h1>
-        <h1>@Model.Address</h1>
+        <h1>@Model.Address</h1> *@
+
+        <form action="/Kent/AfterIndex" method="post">
+            No : <input type="text" value="@Model.No" name="No" /> <br />
+            <hr />
+            Name : <input type="text" value="@Model.Name" name="Name" /> <br />
+            <hr />
+            Address : <input type="text" value="@Model.Address" name="Address"/> <br />
+             <hr />
+             <input type="submit" value="Update" />
+        </form>
+
     </body>
 </html>
