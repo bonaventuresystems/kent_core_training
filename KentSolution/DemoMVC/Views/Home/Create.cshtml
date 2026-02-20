@@ -1,0 +1,39 @@
+﻿<html>
+<head>
+    <title>Add Record</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+
+</head>
+<body class="container">
+    <a href="/Home/Index" class="btn btn-success">See All Records</a>
+    <hr />
+    <div class="table-responsive">
+      <form action="/Home/AfterCreate" method="post">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>
+                            <input type="text" name="Name" class="form-control"/>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Address</td>
+                        <td>
+                            <input type="text" name="Address" class="form-control"  />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" class="btn btn-info" value="Add Record" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+      </form>
+    </div>
+</body>
+</html>

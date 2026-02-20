@@ -9,6 +9,8 @@
     
     </head>
     <body class="container">
+        <a href="/Home/Create" class="btn btn-success">Add Record</a>
+        <hr />
         <div class="table-responsive">
             <table class="table table-bordered">
                 <thead>
@@ -16,6 +18,7 @@
                         <th>No</th>
                         <th>Name</th>
                         <th>Address</th>
+                        <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,6 +28,10 @@
                             <td>@emp.No</td>
                             <td>@emp.Name</td>
                             <td>@emp.Address</td>
+                            <td>
+                            <a class="btn btn-warning" href="/Home/Edit/@emp.No">Edit</a>
+                            <a class="btn btn-danger" href="/Home/Delete/@emp.No">Delete</a>
+                            </td>
                         </tr>
                     }
                 </tbody>

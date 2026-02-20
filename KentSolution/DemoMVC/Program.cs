@@ -20,7 +20,7 @@ namespace DemoMVC
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Kent}/{action=Demo}/{id?}");
 
             app.Run();
         }

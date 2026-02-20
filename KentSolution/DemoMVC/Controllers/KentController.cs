@@ -32,12 +32,10 @@ namespace DemoMVC.Controllers
 
             #endregion
         }
-
         public IActionResult AfterIndex([ModelBinder(typeof(MyModelBinder))]Emp emp)
         {
             return null;
         }
-
         public IActionResult Emps()
         {
             Emp emp1 = new Emp() { No = 11, Name = "Test1", Address = "Pune1" };
@@ -48,6 +46,35 @@ namespace DemoMVC.Controllers
         public IActionResult About()
         {
             return View();
+        }
+
+
+        /// <summary>
+        /// Uncomment DemoV1 View to see this code working
+        /// </summary>
+        /// <returns></returns>
+        //public IActionResult Demo()
+        //{
+        //    Emp emp = new Emp() { No = 19, Name = "Chetan", Address = "Pune" };
+        //    Book book = new Book() { ISBN = 11778, Title = "Let us C", Cost = 300.50 };
+
+        //    Container container = new Container() { myemp = emp, mybook = book };
+
+        //    return View(container); ;
+        //}
+
+        public IActionResult Demo()
+        {
+            Emp emp = new Emp() { No = 19, Name = "Chetan", Address = "Pune" };
+            Book book = new Book() { ISBN = 11778, Title = "Let us C", Cost = 300.50 };
+
+            //ViewData["mybook"] = book;
+            //ViewData["message"] = "Hello World!";
+
+            ViewBag.mybook = book;
+            ViewBag.message = "Hello World!";
+
+            return View(emp); ;
         }
     }
 
