@@ -5,9 +5,14 @@ namespace DemoEFMVC.Controllers
 {
     public class HomeController : Controller
     {
-        KentDBContext db = new KentDBContext(); 
+        KentContext db = new KentContext(); 
+
         public IActionResult Index()
         {
+
+
+
+            //var customers = db.Customers.ToList();
             return View(db.Emps.ToList());
         }
 
@@ -20,9 +25,17 @@ namespace DemoEFMVC.Controllers
         [HttpPost]
         public IActionResult Create(Emp emp)
         {
-            db.Emps.Add(emp);
-            db.SaveChanges();
-            return Redirect("/Home/Index");
+            if(ModelState.IsValid)
+            {
+                db.Emps.Add(emp);
+                db.SaveChanges();
+                return Redirect("/Home/Index");
+            }
+            else
+            {
+                return View(emp);
+            }
+        
         }
 
         public IActionResult Edit(int? id)

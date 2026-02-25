@@ -24,7 +24,7 @@ namespace DemoEFMVC
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Demo}/{action=Create}/{id?}");
 
             app.Run();
         }

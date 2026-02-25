@@ -1,36 +1,29 @@
-﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model DemoEFMVC.Models.Emp
+﻿@* @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers *@
+@model DemoEFMVC.Models.Customer
 <html>
 <head>
     <title>Add Record</title>
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <script src="~/lib/jquery/dist/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-
 </head>
 <body class="container">
-    <a href="/Home/Index" class="btn btn-success">See All Records</a>
     <hr />
     <div class="table-responsive">
-        <form action="/Home/Create" method="post">
+        <form action="/Demo/Create" method="post">
             <table class="table table-bordered">
                 <tbody>
                     <tr>
                         <td>Name</td>
                         <td>
-                          @*   <input type="text" name="Name" class="form-control" value="@Model.Name"/> *@
                           @Html.TextBox("Name")
-                       @*    @Html.ValidationMessage("Name") *@
-
-                            @Html.ValidationMessageFor(model=>model.Name)
+                          @Html.ValidationMessageFor(model=>model.Name)
                         </td>
                     </tr>
 
                     <tr>
                         <td>Address</td>
                         <td>
-                        @*     <input type="text" name="Address" class="form-control"  /> *@
-
                             @Html.TextBox("Address")
                             @Html.ValidationMessage("Address")
                         </td>

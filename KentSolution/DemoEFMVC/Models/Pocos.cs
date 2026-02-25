@@ -34,7 +34,8 @@ namespace DemoEFMVC.Models
     }
 
     [Table("Emp")]
-    public class Emp
+    [MetadataType(typeof(PocoValidation))]
+    public partial class Emp
     {
         [Key]
         //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -43,6 +44,7 @@ namespace DemoEFMVC.Models
 
         [Column("Name", TypeName = "varchar")]
         [StringLength(50)]
+        //[Required(ErrorMessage = "Name is requied!")]
         public string Name { get; set; }
 
         [Column("Age", TypeName = "int")]
@@ -50,10 +52,11 @@ namespace DemoEFMVC.Models
 
         [Column("Address", TypeName = "varchar")]
         [StringLength(50)]
+       // [Required(ErrorMessage = "Address is required")]
         public string Address { get; set; }
     }
 
-    public class KentDBContext: DbContext
+    public partial class KentContext
     {
         public DbSet<Emp> Emps { get; set; }
 
@@ -64,6 +67,21 @@ namespace DemoEFMVC.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=Kent;Integrated Security=True;");
+        }
+    }
+
+    public class KentValidation : ValidationAttribute
+    {
+        public override bool IsValid(object? value)
+        {
+            if (value!=null && value.ToString() == "1234")
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }
