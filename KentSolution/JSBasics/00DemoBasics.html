@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Demo</title>
+  </head>
+  <body>
+    <input type="text" value="abcd" />
+    <script>
+      debugger;
+      //   function Test(p, q, r) {
+      //   var Test = function (p, q, r) {
+      //     debugger;
+      //     var v = 100;
+      //     console.log(typeof v);
+
+      //     v = "abcd";
+      //     console.log(typeof v);
+
+      //     v = true;
+      //     console.log(typeof v);
+
+      //     v = undefined;
+      //     console.log(typeof v);
+
+      //     v = null;
+      //     console.log(typeof v);
+      //     return null;
+      //   };
+      //   var a = new Array();
+      //   console.log(typeof Test);
+      //   debugger;
+      //var reply = Test(10, 20, 30);
+    </script>
+    <script>
+      //Literal Syntax
+      //   var person = {
+      //     No: 10,
+      //     Name: "mahesh",
+      //     Print: function () {
+      //       console.log(this.No + this.Name);
+      //     },
+      //   };
+
+      //   person.Print();
+
+      //Constructor Function Syntax
+      //   var Person = function (no, name, address) {
+      //     this.No = no;
+      //     this.Name = name;
+      //     this.Address = address;
+
+      //     this.Print = function () {
+      //       console.log(this.No + this.Name);
+      //     };
+      //   };
+
+      //   var p = new Person(10, "mahesh", "pune");
+      //   p.Print();
+
+      class Person {
+        //ECMA 6 2015
+        constructor(no, name, address) {
+          this.No = no;
+          this.Name = name;
+          this.Address = address;
+        }
+        Print() {
+          console.log(this.No + this.Name);
+        }
+      }
+
+      var p = new Person(10, "mahesh", "pune");
+      p.Print();
+    </script>
+  </body>
+</html>

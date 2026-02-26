@@ -1,0 +1,213 @@
+--CREATE TABLE Categories (
+--    CategoryID INT IDENTITY(1,1) PRIMARY KEY,
+--    CategoryName NVARCHAR(50) NOT NULL,
+--    Description NVARCHAR(255),
+--    ParentCategoryID INT NULL,
+--    IsActive BIT DEFAULT 1,
+--    CreatedDate DATETIME2 DEFAULT GETDATE(),
+--    UpdatedDate DATETIME2,
+--    ImageUrl NVARCHAR(255),
+--    SortOrder INT DEFAULT 0,
+--    MetaTitle NVARCHAR(100)
+--);
+
+--CREATE TABLE Suppliers (
+--    SupplierID INT IDENTITY(1,1) PRIMARY KEY,
+--    SupplierName NVARCHAR(100) NOT NULL,
+--    ContactName NVARCHAR(100),
+--    Email NVARCHAR(100),
+--    Phone NVARCHAR(20),
+--    Address NVARCHAR(255),
+--    City NVARCHAR(50),
+--    Country NVARCHAR(50),
+--    Rating DECIMAL(3,2) DEFAULT 0,
+--    IsActive BIT DEFAULT 1
+--);
+
+--CREATE TABLE Products (
+--    ProductID INT IDENTITY(1,1) PRIMARY KEY,
+--    ProductName NVARCHAR(100) NOT NULL,
+--    Description NVARCHAR(500),
+--    CategoryID INT,
+--    SupplierID INT,
+--    UnitPrice DECIMAL(10,2),
+--    UnitsInStock INT DEFAULT 0,
+--    ReorderLevel INT DEFAULT 0,
+--    Discontinued BIT DEFAULT 0,
+--    ImageUrl NVARCHAR(255),
+--    FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID),
+--    FOREIGN KEY (SupplierID) REFERENCES Suppliers(SupplierID)
+--);
+
+--CREATE TABLE Customers (
+--    CustomerID INT IDENTITY(1,1) PRIMARY KEY,
+--    CustomerName NVARCHAR(100) NOT NULL,
+--    Email NVARCHAR(100),
+--    Phone NVARCHAR(20),
+--    Address NVARCHAR(255),
+--    City NVARCHAR(50),
+--    Country NVARCHAR(50),
+--    PostalCode NVARCHAR(20),
+--    RegistrationDate DATETIME2 DEFAULT GETDATE(),
+--    LoyaltyPoints INT DEFAULT 0
+--);
+
+--CREATE TABLE Employees (
+--    EmployeeID INT IDENTITY(1,1) PRIMARY KEY,
+--    FirstName NVARCHAR(50) NOT NULL,
+--    LastName NVARCHAR(50) NOT NULL,
+--    Email NVARCHAR(100),
+--    Phone NVARCHAR(20),
+--    HireDate DATETIME2 DEFAULT GETDATE(),
+--    Salary DECIMAL(10,2),
+--    Department NVARCHAR(50),
+--    ManagerID INT NULL,
+--    IsActive BIT DEFAULT 1,
+--    FOREIGN KEY (ManagerID) REFERENCES Employees(EmployeeID)
+--);
+
+--CREATE TABLE Orders (
+--    OrderID INT IDENTITY(1,1) PRIMARY KEY,
+--    CustomerID INT,
+--    EmployeeID INT,
+--    OrderDate DATETIME2 DEFAULT GETDATE(),
+--    ShipDate DATETIME2,
+--    ShipCity NVARCHAR(50),
+--    ShipCountry NVARCHAR(50),
+--    Freight DECIMAL(10,2) DEFAULT 0,
+--    Status NVARCHAR(20) DEFAULT 'Pending',
+--    TotalAmount DECIMAL(10,2),
+--    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
+--    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+--);
+
+--CREATE TABLE OrderDetails (
+--    OrderDetailID INT IDENTITY(1,1) PRIMARY KEY,
+--    OrderID INT,
+--    ProductID INT,
+--    Quantity INT DEFAULT 1,
+--    UnitPrice DECIMAL(10,2),
+--    Discount DECIMAL(3,2) DEFAULT 0,
+--    LineTotal AS (Quantity * UnitPrice * (1 - Discount)) PERSISTED,
+--    ShippedDate DATETIME2,
+--    Notes NVARCHAR(255),
+--    TrackingNumber NVARCHAR(50),
+--    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
+--    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+--);
+
+--CREATE TABLE Inventory (
+--    InventoryID INT IDENTITY(1,1) PRIMARY KEY,
+--    ProductID INT,
+--    Warehouse NVARCHAR(50),
+--    Quantity INT DEFAULT 0,
+--    ReservedQuantity INT DEFAULT 0,
+--    MinStockLevel INT DEFAULT 0,
+--    LastUpdated DATETIME2 DEFAULT GETDATE(),
+--    Location NVARCHAR(100),
+--    CostPrice DECIMAL(10,2),
+--    BatchNumber NVARCHAR(50),
+--    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+--);
+
+--CREATE TABLE Payments (
+--    PaymentID INT IDENTITY(1,1) PRIMARY KEY,
+--    OrderID INT,
+--    Amount DECIMAL(10,2),
+--    PaymentDate DATETIME2 DEFAULT GETDATE(),
+--    PaymentMethod NVARCHAR(50),
+--    TransactionID NVARCHAR(100),
+--    Status NVARCHAR(20) DEFAULT 'Completed',
+--    Gateway NVARCHAR(50),
+--    CardLast4 NVARCHAR(4),
+--    RefundedAmount DECIMAL(10,2) DEFAULT 0,
+--    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
+--);
+
+--CREATE TABLE Shipping (
+--    ShippingID INT IDENTITY(1,1) PRIMARY KEY,
+--    OrderID INT,
+--    Carrier NVARCHAR(50),
+--    TrackingNumber NVARCHAR(100),
+--    ShippedDate DATETIME2,
+--    DeliveredDate DATETIME2,
+--    Cost DECIMAL(10,2),
+--    Status NVARCHAR(20),
+--    Address NVARCHAR(255),
+--    SignatureRequired BIT DEFAULT 0,
+--    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
+--);
+
+--CREATE TABLE Reviews (
+--    ReviewID INT IDENTITY(1,1) PRIMARY KEY,
+--    ProductID INT,
+--    CustomerID INT,
+--    Rating INT CHECK (Rating BETWEEN 1 AND 5),
+--    ReviewText NVARCHAR(500),
+--    ReviewDate DATETIME2 DEFAULT GETDATE(),
+--    IsApproved BIT DEFAULT 0,
+--    HelpfulVotes INT DEFAULT 0,
+--    Title NVARCHAR(200),
+--    ReviewerEmail NVARCHAR(100),
+--    FOREIGN KEY (ProductID) REFERENCES Products(ProductID),
+--    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+--);
+
+--CREATE TABLE Promotions (
+--    PromotionID INT IDENTITY(1,1) PRIMARY KEY,
+--    PromotionName NVARCHAR(100),
+--    DiscountPercent DECIMAL(5,2),
+--    StartDate DATETIME2,
+--    EndDate DATETIME2,
+--    ProductID INT NULL,
+--    CategoryID INT NULL,
+--    UsageLimit INT,
+--    UsedCount INT DEFAULT 0,
+--    Code NVARCHAR(50),
+--    FOREIGN KEY (ProductID) REFERENCES Products(ProductID),
+--    FOREIGN KEY (CategoryID) REFERENCES Categories(CategoryID)
+--);
+
+--CREATE TABLE Coupons (
+--    CouponID INT IDENTITY(1,1) PRIMARY KEY,
+--    Code NVARCHAR(20) UNIQUE,
+--    DiscountAmount DECIMAL(10,2),
+--    DiscountPercent DECIMAL(5,2),
+--    ValidFrom DATETIME2,
+--    ValidTo DATETIME2,
+--    MinOrderAmount DECIMAL(10,2),
+--    MaxUses INT,
+--    UsedCount INT DEFAULT 0,
+--    IsActive BIT DEFAULT 1,
+--    Description NVARCHAR(255)
+--);
+
+--CREATE TABLE Wishlists (
+--    WishlistID INT IDENTITY(1,1) PRIMARY KEY,
+--    CustomerID INT,
+--    ProductID INT,
+--    AddedDate DATETIME2 DEFAULT GETDATE(),
+--    Notes NVARCHAR(255),
+--    Priority INT DEFAULT 0,
+--    IsPrivate BIT DEFAULT 0,
+--    ShareUrl NVARCHAR(255),
+--    ReminderSent BIT DEFAULT 0,
+--    Source NVARCHAR(50),
+--    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
+--    FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
+--);
+
+--CREATE TABLE Logs (
+--    LogID BIGINT IDENTITY(1,1) PRIMARY KEY,
+--    TableName NVARCHAR(50),
+--    RecordID INT,
+--    Action NVARCHAR(20),
+--    OldValue NVARCHAR(1000),
+--    NewValue NVARCHAR(1000),
+--    UserID INT,
+--    LogDate DATETIME2 DEFAULT GETDATE(),
+--    IPAddress NVARCHAR(45),
+--    SessionID NVARCHAR(100),
+--    UserAgent NVARCHAR(500)
+--);
+
