@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <title>Demo</title>
+  </head>
+  <body>
+    <input type="text" id="txt1" value="ABC" />
+    <input type="button" value="Click Me" onclick="F1()" />
+    <script>
+      function F1() {
+        debugger;
+        var refToTxt1 = window.document.getElementById("txt1");
+        refToTxt1.value = "1234";
+        // console.log(refToTxt1.value);
+      }
+    </script>
+  </body>
+</html>

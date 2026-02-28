@@ -9,6 +9,17 @@ namespace DemoEFMVC
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddCors((corsoptions) =>
+            {
+                corsoptions.AddPolicy("policy1", (policy) => {
+                    policy.WithOrigins("*").WithMethods("*").WithHeaders("*");
+                });
+
+                corsoptions.AddPolicy("policy2", (policy) => {
+                    policy.WithOrigins("amazon.com").WithMethods("GET, POST").WithHeaders("*");
+                });
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -19,12 +30,13 @@ namespace DemoEFMVC
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseCors();
 
             app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Demo}/{action=Create}/{id?}");
+                pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
         }

@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Demo</title>
+  </head>
+  <body>
+    <input type="text" id="txt1" value="" />
+    <input type="text" id="txt2" value="" />
+    <hr />
+    <div id="divResult" style="color: blueviolet"></div>
+    <hr />
+    <input type="button" value="Add" onclick="Add()" />
+    <script>
+      function Add() {
+        debugger;
+        var refToTxt1 = window.document.getElementById("txt1");
+        var refToTxt2 = window.document.getElementById("txt2");
+        var refTodivResult = window.document.getElementById("divResult");
+
+        var x = parseInt(refToTxt1.value);
+        var y = parseInt(refToTxt2.value);
+        var sum = x + y;
+        refTodivResult.innerHTML = "<h1>" + sum + "</h1>";
+      }
+    </script>
+  </body>
+</html>

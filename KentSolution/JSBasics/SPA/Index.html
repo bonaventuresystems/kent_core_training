@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <img src="logo.jpg" />
+    <hr />
+    <a onclick="GoTo('home')">Home</a> |
+    <a onclick="GoTo('about')">ABout Us</a> |
+    <a onclick="GoTo('contact')">Contact Us</a> |
+    <hr />
+    <div id="root"></div>
+
+    <script>
+      function GoTo(pagename) {
+        var refToContainer = document.getElementById("root");
+        var content = "";
+
+        switch (pagename) {
+          case "home":
+            content = "<h1>Welcome Home!</h1>";
+            break;
+
+          case "about":
+            content = "<h1>About Us!</h1>";
+            break;
+
+          case "contact":
+            content = "<h1>Contact Us!</h1>";
+            break;
+          default:
+            content = "<h1>Not Found!</h1>";
+            break;
+        }
+
+        refToContainer.innerHTML = content;
+      }
+
+      GoTo("home");
+    </script>
+  </body>
+</html>

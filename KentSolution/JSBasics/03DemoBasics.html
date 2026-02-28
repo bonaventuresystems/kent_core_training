@@ -1,0 +1,65 @@
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css"
+      integrity="sha512-2bBQCjcnw658Lho4nlXJcc6WkV/UxpE/sAokbXPxQNGqmNdQrWqtw26Ns9kFF/yG792pKR1Sx8/Y1Lf1XN4GKA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.min.js"
+      integrity="sha512-nKXmKvJyiGQy343jatQlzDprflyB5c+tKCzGP3Uq67v+lmzfnZUi/ZT+fc6ITZfSC5HhaBKUIvr/nTLCV+7F+Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body class="container">
+    <button onclick="GetData()" class="btn btn-primary">Get Data</button>
+    <hr />
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <th>No</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Address</th>
+        </thead>
+        <tbody id="container"></tbody>
+      </table>
+    </div>
+    <script>
+      function GetData() {
+        debugger;
+        var helper = new XMLHttpRequest(); // helper.readyState 0
+        var refToTable = document.getElementById("container");
+
+        refToTable.innerHTML = "";
+        helper.onreadystatechange = () => {
+          if (helper.readyState == 4 && helper.status == 200) {
+            debugger;
+            var dataInString = helper.responseText;
+            var employees = JSON.parse(dataInString);
+
+            for (let index = 0; index < employees.length; index++) {
+              const employee = employees[index];
+              var row = `<tr>
+                        <td>${employee.no}</td>
+                        <td>${employee.name}</td>
+                        <td>${employee.age}</td>
+                        <td>${employee.address}</td>
+                      </tr>`;
+
+              refToTable.innerHTML = refToTable.innerHTML + row;
+            }
+          }
+        };
+
+        helper.open("GET", "http://localhost:5122/api/emps"); // helper.readyState 1
+        helper.send(); // helper.readyState 2
+        // helper.readyState 3 4
+      }
+    </script>
+  </body>
+</html>
