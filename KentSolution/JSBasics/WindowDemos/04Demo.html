@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body id="mybody">
+    <input id="myText" value="" />
+    <button onclick="KeepCalling()">Start New Queue</button>
+    <button onclick="StopCalling()">Clean A Queue</button>
+    <button onclick="Inject()">Inject Script</button>
+    <hr />
+    <img
+      id="mycar"
+      src="car.png"
+      style="position: absolute; left: 0px; top: 100px"
+    />
+    <script>
+      // function Inject() {
+      //   var myText = document.getElementById("myText");
+      //   myText.value = "<script>window.location.href='kent.com'</script>";
+      // }
+    </script>
+    <script>
+      var counter = 0;
+      var refToCar = document.getElementById("mycar");
+      debugger;
+      function SayHello() {
+        counter = counter + 1;
+        refToCar.style.left = counter + "px";
+        // console.log(counter);
+      }
+    </script>
+    <script>
+      var arr = new Array();
+
+      function KeepCalling() {
+        var num = window.setInterval(SayHello, 100);
+        arr.push(num);
+      }
+
+      function StopCalling() {
+        for (let index = 0; index < arr.length; index++) {
+          const queNo = arr[index];
+          window.clearInterval(queNo);
+        }
+      }
+    </script>
+    <script>
+      function Disturb() {
+        //alert("6767");
+        clearInterval(num);
+      }
+    </script>
+  </body>
+</html>

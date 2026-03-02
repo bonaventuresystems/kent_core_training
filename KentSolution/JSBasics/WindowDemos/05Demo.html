@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Success() {
+        console.log("Success");
+      }
+
+      function Failure() {
+        console.log("failure");
+      }
+
+      function Check(f1, f2) {
+        if (10 > 0) {
+          f1();
+        } else {
+          f2();
+        }
+      }
+
+      var promise = new Promise(Check);
+      promise.then(Success); //.catch(Failure)
+
+      //   Check(Success, Failure);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function SayHello() {
+        console.log("Hello");
+      }
+    </script>
+    <script>
+      console.log("Hi");
+      // var num = window.setTimeout(SayHello, 5000);
+      var num = window.setInterval(SayHello, 1000);
+      console.log(num);
+      console.log("Bye");
+    </script>
+    <script>
+      function Disturb() {
+        //alert("6767");
+        clearInterval(num);
+      }
+    </script>
+    <button onclick="Disturb()">Click Me</button>
+  </body>
+</html>
