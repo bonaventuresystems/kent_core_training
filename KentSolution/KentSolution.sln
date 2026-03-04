@@ -41,6 +41,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoEFMVC", "DemoEFMVC\Demo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11DemoLINQ", "11DemoLINQ\11DemoLINQ.csproj", "{0AEA292D-3E43-4FEC-A4AE-433DA518A4B0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoMVCFilters", "DemoMVCFilters\DemoMVCFilters.csproj", "{B61982AE-FE2C-4365-A757-2710E0654235}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoDesk", "DemoDesk\DemoDesk.csproj", "{7A9F3BDA-E08E-4026-BD39-F4737F96816A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +127,14 @@ Global
 		{0AEA292D-3E43-4FEC-A4AE-433DA518A4B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AEA292D-3E43-4FEC-A4AE-433DA518A4B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AEA292D-3E43-4FEC-A4AE-433DA518A4B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B61982AE-FE2C-4365-A757-2710E0654235}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B61982AE-FE2C-4365-A757-2710E0654235}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B61982AE-FE2C-4365-A757-2710E0654235}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B61982AE-FE2C-4365-A757-2710E0654235}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A9F3BDA-E08E-4026-BD39-F4737F96816A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A9F3BDA-E08E-4026-BD39-F4737F96816A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A9F3BDA-E08E-4026-BD39-F4737F96816A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A9F3BDA-E08E-4026-BD39-F4737F96816A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
