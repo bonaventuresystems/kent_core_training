@@ -57,3 +57,34 @@ Logged at : 3/4/2026 11:08:08 AM - Result Method Executing : /
 Logged at : 3/4/2026 11:08:26 AM - Result Method Executing : /
 Logged at : 3/4/2026 11:08:50 AM - Result Method Executing : /
 Logged at : 3/4/2026 11:09:31 AM - Result Method Executing : /
+Logged at : 3/5/2026 9:19:12 AM - Result Method Executing : /
+Logged at : 3/5/2026 9:19:16 AM - Action Method Executing : /Home/About/10
+Logged at : 3/5/2026 9:19:16 AM - Action Method Executed : /Home/About/10
+Logged at : 3/5/2026 9:19:16 AM - Result Method Executing : /Home/About/10
+Logged at : 3/5/2026 9:19:16 AM - Result Method Executed : /Home/About/10
+Logged at : 3/5/2026 9:19:23 AM - Action Method Executing : /Home/About
+Logged at : 3/5/2026 9:19:23 AM - Action Method Executed : /Home/About
+Logged at : 3/5/2026 9:19:23 AM - Result Method Executing : /Home/About
+Logged at : 3/5/2026 9:19:23 AM - Result Method Executed : /Home/About
+Logged at : 3/5/2026 9:20:10 AM - Result Method Executing : /
+Logged at : 3/5/2026 9:20:25 AM - Result Method Executing : /Demo/About
+Logged at : 3/5/2026 9:20:30 AM - Result Method Executing : /Demo/Index
+Logged at : 3/5/2026 9:26:24 AM - Result Method Executing : /
+Logged at : 3/5/2026 9:27:28 AM - Result Method Executing : /
+Logged at : 3/8/2026 9:28:03 AM - Result Method Executing : /
+Logged at : 3/5/2026 9:26:38 AM - Result Method Executing : /
+Logged at : 3/5/2026 9:35:39 AM - Result Method Executing : /
+Logged at : 3/5/2026 9:35:39 AM - The layout page '/Views/Shared/WeekDayMaster.cshtml' cannot find the section 'AdSection' in the content page '/Views/Demo/Index.cshtml'.
+Logged at : 3/5/2026 9:36:20 AM - Result Method Executing : /
+Logged at : 3/5/2026 9:38:07 AM - Result Method Executing : /
+Logged at : 3/8/2026 9:38:46 AM - Result Method Executing : /
+Logged at : 3/8/2026 9:38:46 AM - The following sections have been defined but have not been rendered by the page at '/Views/Shared/WeekEndMaster.cshtml': 'AdSection'. To ignore an unrendered section call IgnoreSection("sectionName").
+Logged at : 3/5/2026 10:50:52 AM - The view 'Index' was not found. The following locations were searched:
+/Views/Test/Index.cshtml
+/Views/Shared/Index.cshtml
+Logged at : 3/5/2026 10:51:11 AM - The view 'Index' was not found. The following locations were searched:
+/Views/Test/Index.cshtml
+/Views/Shared/Index.cshtml
+Logged at : 3/5/2026 10:52:05 AM - The view 'Index' was not found. The following locations were searched:
+/Views/Test/Index.cshtml
+/Views/Shared/Index.cshtml

@@ -1,7 +1,7 @@
 ﻿
 @{
    
-    Layout = "~/Views/Shared/WeekDayMaster.cshtml";
+    Layout = ViewBag.Master;
 }
 
 <h1>Welcome home</h1>
@@ -13,3 +13,15 @@
 
     "A drone unfortunately struck a parking lot adjacent to the chancellery building and then set off a fire in that place. All personnel are accounted for," he told reporters in Washington.
 </p>
+
+@section AdSection
+{
+    <p>
+        This is an ad from INDEX PAGE
+    </p>
+}
+
+
+<h6>
+    some other content
+</h6>
