@@ -47,6 +47,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoDesk", "DemoDesk\DemoDe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{01A3976E-C1FE-4533-83B5-CDF2005F8B07}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KentAPIs", "KentAPIs\KentAPIs.csproj", "{8D240740-3959-4797-BC64-E3EBF9569A37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KentAPIsTests", "KentAPIsTests\KentAPIsTests.csproj", "{62B59D56-C405-43E4-8BA3-64A84B59C0B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -141,6 +145,14 @@ Global
 		{01A3976E-C1FE-4533-83B5-CDF2005F8B07}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01A3976E-C1FE-4533-83B5-CDF2005F8B07}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01A3976E-C1FE-4533-83B5-CDF2005F8B07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D240740-3959-4797-BC64-E3EBF9569A37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D240740-3959-4797-BC64-E3EBF9569A37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D240740-3959-4797-BC64-E3EBF9569A37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D240740-3959-4797-BC64-E3EBF9569A37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62B59D56-C405-43E4-8BA3-64A84B59C0B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62B59D56-C405-43E4-8BA3-64A84B59C0B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62B59D56-C405-43E4-8BA3-64A84B59C0B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62B59D56-C405-43E4-8BA3-64A84B59C0B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
