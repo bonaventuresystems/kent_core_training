@@ -1,0 +1,19 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Ticker";
+
+package ticker;
+
+service TickerService {
+  rpc GetTickerStream(TickerRequest) returns (stream TickerResponse);
+}
+
+message TickerRequest {
+  string symbol = 1;
+}
+
+message TickerResponse {
+  string symbol = 1;
+  double price = 2;
+  string timestamp = 3;
+}

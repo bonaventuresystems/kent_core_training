@@ -66,13 +66,19 @@
     </div>
     <hr />
     <script>
-      var apiUrl = "http://localhost:5150/api/emps";
+      //var apiUrl = "http://localhost:5150/api/emps";
+      // var apiUrl =
+      //   "https://dintless-cognoscitively-alexandria.ngrok-free.dev/api/emps";
+
+      var apiUrl =
+        "https://kent-fthmcgatgab2dza3.canadacentral-01.azurewebsites.net/api/emps";
 
       function GetData() {
         var helper = new XMLHttpRequest();
         helper.open("GET", apiUrl);
         helper.onreadystatechange = function () {
           if (helper.readyState === 4 && helper.status === 200) {
+            debugger;
             var emps = JSON.parse(helper.responseText);
             console.log(emps);
             var tableBody = document.getElementById("empTableBody");

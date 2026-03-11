@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css"
+      integrity="sha512-2bBQCjcnw658Lho4nlXJcc6WkV/UxpE/sAokbXPxQNGqmNdQrWqtw26Ns9kFF/yG792pKR1Sx8/Y1Lf1XN4GKA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.min.js"
+      integrity="sha512-nKXmKvJyiGQy343jatQlzDprflyB5c+tKCzGP3Uq67v+lmzfnZUi/ZT+fc6ITZfSC5HhaBKUIvr/nTLCV+7F+Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body onload="GetData()" class="container">
+    <h1>Client To API</h1>
+    <hr />
+    <input type="hidden" id="no" />
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <tbody id="empTab">
+          <tr>
+            <td>Name</td>
+            <td>
+              <input type="text" id="name" class="form-control" />
+            </td>
+          </tr>
+          <tr>
+            <td>Address</td>
+            <td>
+              <input type="text" id="address" class="form-control" />
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <button class="btn btn-primary" onclick="AddData()">
+                Add Record
+              </button>
+              |
+              <button class="btn btn-success" onclick="UpdateData()">
+                Update Record
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <hr />
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody id="empTableBody"></tbody>
+      </table>
+    </div>
+    <hr />
+    <script>
+      //var apiUrl = "http://localhost:5150/api/emps";
+      var apiUrl =
+        "https://dintless-cognoscitively-alexandria.ngrok-free.dev/api/emps";
+
+      function GetData() {
+        var helper = new XMLHttpRequest();
+        helper.open("GET", apiUrl);
+        helper.onreadystatechange = function () {
+          if (helper.readyState === 4 && helper.status === 200) {
+            debugger;
+            var emps = JSON.parse(helper.responseText);
+            console.log(emps);
+            var tableBody = document.getElementById("empTableBody");
+            tableBody.innerHTML = ""; // Clear existing data
+            emps.forEach(function (emp, index) {
+              var row = document.createElement("tr");
+              row.innerHTML =
+                "<td>" +
+                (index + 1) +
+                "</td><td>" +
+                emp.name +
+                "</td><td>" +
+                emp.address +
+                "</td>" +
+                "<td><button class='btn btn-warning' onclick='EditData(" +
+                emp.no +
+                ")'>Edit</button></td>" +
+                "<td><button class='btn btn-danger' onclick='DeleteData(" +
+                emp.no +
+                ")'>Delete</button></td>";
+              tableBody.appendChild(row);
+            });
+          }
+        };
+        helper.send();
+      }
+
+      function AddData() {
+        debugger;
+        var name = document.getElementById("name").value;
+        var address = document.getElementById("address").value;
+
+        var data = {
+          name: name,
+          address: address,
+        };
+
+        var helper = new XMLHttpRequest();
+        helper.open("POST", apiUrl);
+        helper.setRequestHeader("Content-Type", "application/json");
+        helper.onreadystatechange = function () {
+          if (helper.readyState === 4 && helper.status === 200) {
+            // alert("Record added successfully!");
+            GetData(); // Refresh the data after adding a new record
+            document.getElementById("name").value = "";
+            document.getElementById("address").value = "";
+          }
+        };
+        helper.send(JSON.stringify(data));
+      }
+
+      function EditData(id) {
+        var noField = document.getElementById("no");
+        noField.value = id; // Store the ID in a hidden field for later use
+        var helper = new XMLHttpRequest();
+        helper.open("GET", apiUrl + "/" + id);
+        helper.onreadystatechange = function () {
+          if (helper.readyState === 4 && helper.status === 200) {
+            var emp = JSON.parse(helper.responseText);
+            document.getElementById("name").value = emp.name;
+            document.getElementById("address").value = emp.address;
+          }
+        };
+        helper.send();
+      }
+
+      function DeleteData(id) {
+        var helper = new XMLHttpRequest();
+        helper.open("DELETE", apiUrl + "/" + id);
+        helper.onreadystatechange = function () {
+          if (helper.readyState === 4 && helper.status === 200) {
+            // alert("Record deleted successfully!");
+            GetData(); // Refresh the data after deleting the record
+          }
+        };
+        helper.send();
+      }
+
+      function UpdateData() {
+        var no = document.getElementById("no").value;
+        var name = document.getElementById("name").value;
+        var address = document.getElementById("address").value;
+
+        var data = {
+          no: no,
+          name: name,
+          address: address,
+        };
+
+        var helper = new XMLHttpRequest();
+        helper.open("PUT", apiUrl + "/" + no);
+        helper.setRequestHeader("Content-Type", "application/json");
+        helper.onreadystatechange = function () {
+          if (helper.readyState === 4 && helper.status === 200) {
+            //alert("Record updated successfully!");
+            GetData(); // Refresh the data after updating the record
+            document.getElementById("name").value = "";
+            document.getElementById("address").value = "";
+            document.getElementById("no").value = ""; // Clear the hidden field
+          }
+        };
+        helper.send(JSON.stringify(data));
+      }
+    </script>
+  </body>
+</html>

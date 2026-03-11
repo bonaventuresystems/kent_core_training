@@ -14,7 +14,14 @@ namespace KentAPIs.Controllers
         [HttpGet]
         public IEnumerable<Emp> Get()
         {
-            return db.Emps.ToList();
+            return new List<Emp>() { 
+             new Emp(){  No = 11, Name = "ABC1", Address = "Pune1"},
+             new Emp(){  No = 12, Name = "ABC2", Address = "Pune2"},
+             new Emp(){  No = 13, Name = "ABC3", Address = "Pune3"},
+             new Emp(){  No = 14, Name = "ABC4", Address = "Pune4"},
+             new Emp(){  No = 15, Name = "ABC5", Address = "Pune5"}
+            };
+            //return db.Emps.ToList();
         }
 
         // GET api/<EmpsController>/5

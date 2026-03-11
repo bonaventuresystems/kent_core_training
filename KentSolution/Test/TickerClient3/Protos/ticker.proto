@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option csharp_namespace = "Ticker";
+
+package ticker;
+
+service TickerService {
+  rpc ChatTickerStream(stream TickerMessage) returns (stream TickerMessage);
+}
+
+message TickerMessage {
+  string type = 1;      // "price", "control", "ack"
+  string symbol = 2;
+  double price = 3;
+  string timestamp = 4;
+  string command = 5;   // "start", "pause", "resume", "stop"
+}
